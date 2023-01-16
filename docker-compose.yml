@@ -25,7 +25,7 @@ services:
 
 
   nodered:
-    image: nodered_komatsu:saving
+    image: dpflores/nodered_komatsu:saving
     restart: always
     ports:
       - 1880:1880
