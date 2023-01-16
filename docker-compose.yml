@@ -11,8 +11,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      MARIADB_ROOT_PASSWORD: /run/secrets/db_password
-
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_password
     secrets:
       - db_password
 
@@ -25,16 +24,13 @@ services:
       - PMA_ARBITRARY=1
 
 
-  # nodered:
-  #   image: nodered_horno_komatsu
-  #   restart: always
-  #   ports:
-  #     - 1880:1880
-    
+  nodered:
+    image: nodered_komatsu:saving
+    restart: always
+    ports:
+      - 1880:1880
+      
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
 
-  #   network_mode: "host"
-
-
-  secrets:
-    db_password:
-      file: ./secrets/db_password.txt
