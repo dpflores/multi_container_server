@@ -11,8 +11,14 @@ services:
     ports:
       - 3306:3306
     environment:
-      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
     secrets:
+      - db_password
       - db_root_password
 
   phpmyadmin:
@@ -31,6 +37,7 @@ services:
       - 1880:1880
       
 secrets:
-  db_root_password:
+  db_password:
     file: ./secrets/db_password.txt
-
+  db_root_password:
+    file: ./secrets/db_root_password.txt
