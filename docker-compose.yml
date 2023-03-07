@@ -44,19 +44,10 @@ services:
     ports:
       - 8080:80
     environment:
-      - PMA_HOST=db
+      - PMA_ARBITRARY=1
     depends_on:
       - db
 
-  phpmyadmin2:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8081:80
-    environment:
-      - PMA_HOST=db2
-    depends_on:
-      - db2
 
 
   nodered:
