@@ -9,7 +9,7 @@ services:
       - ./mariadb_data:/var/lib/mysql
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_DATABASE: db_name
       MYSQL_USER: db_user
